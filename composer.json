@@ -1,0 +1,8 @@
+{
+  "name": "exposia/simplecontactform-plugin",
+  "type": "october-plugin",
+  "description": "Simple contact form plugin for OctoberCMS",
+  "require": {
+    "composer/installers": "~1.0"
+  }
+}

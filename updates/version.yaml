@@ -1,0 +1,5 @@
+v1.0.1:
+    - 'Initialize plugin'
+v1.0.2:
+    - 'Created table exposia_simplecontactform_message'
+    - builder_table_create_exposia_simplecontactform_message.php

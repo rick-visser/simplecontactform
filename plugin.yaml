@@ -1,0 +1,6 @@
+plugin:
+    name: 'exposia.simplecontactform::lang.plugin.name'
+    description: 'exposia.simplecontactform::lang.plugin.description'
+    author: Exposia
+    icon: oc-icon-envelope
+    homepage: ''
