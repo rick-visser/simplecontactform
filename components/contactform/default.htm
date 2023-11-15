@@ -98,12 +98,12 @@
             </div>
         </div>
         <div class="sm:col-span-2">
-            <label for="address" class="block text-sm font-semibold leading-6 {{ errors.first('address') ? 'text-red-600' : 'text-gray-900' }}">Adres</label>
+            <label for="street" class="block text-sm font-semibold leading-6 {{ errors.first('street') ? 'text-red-600' : 'text-gray-900' }}">Adres</label>
             <div class="mt-2.5">
-                <input type="text" name="address" id="address" autocomplete="street-address" value="{{ form_value('address') }}" class="bg-white block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset {{ errors.first('address') ? 'ring-red-600' : 'ring-gray-300' }} placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-main sm:text-sm sm:leading-6">
-                {% if errors.first('address') %}
+                <input type="text" name="street" id="street" autocomplete="street-address" value="{{ form_value('street') }}" class="bg-white block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset {{ errors.first('street') ? 'ring-red-600' : 'ring-gray-300' }} placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-main sm:text-sm sm:leading-6">
+                {% if errors.first('street') %}
                 <span class="text-red-600 text-xs">
-                    {{ errors.first('address') }}
+                    {{ errors.first('street') }}
                 </span>
                 {% endif %}
             </div>

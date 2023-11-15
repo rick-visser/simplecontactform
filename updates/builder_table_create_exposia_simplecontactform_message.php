@@ -14,12 +14,12 @@ class BuilderTableCreateExposiaSimplecontactformMessage extends Migration
             $table->string('lastname', 255);
             $table->string('email', 255);
             $table->string('phone', 255);
-            $table->string('street', 255);
-            $table->string('city', 255);
-            $table->string('state', 255);
-            $table->string('zip', 255);
-            $table->string('country', 255);
-            $table->string('company', 255);
+            $table->string('street', 255)->nullable();
+            $table->string('city', 255)->nullable();
+            $table->string('state', 255)->nullable();
+            $table->string('zip', 255)->nullable();
+            $table->string('country', 255)->nullable();
+            $table->string('company', 255)->nullable();
             $table->string('content', 1055);
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();

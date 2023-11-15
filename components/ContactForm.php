@@ -28,7 +28,6 @@ class ContactForm extends ComponentBase
             'phone' => $request->get('phone'),
             'street' => $request->get('street'),
             'city' => $request->get('city'),
-//            'state' => $request->get('state'),
             'zip' => $request->get('zip'),
             'company' => $request->get('company'),
             'content' => $request->get('content'),
@@ -39,10 +38,9 @@ class ContactForm extends ComponentBase
             'firstname' => 'required',
             'lastname' => 'required',
             'email' => 'required|email',
-            'phone' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'street' => 'nullable',
             'city' => 'nullable',
-//            'state' => 'nullable',
             'zip' => 'nullable',
             'company' => 'nullable',
             'content' => 'required',
@@ -56,6 +54,7 @@ class ContactForm extends ComponentBase
             'email.email' => 'Vul een geldig e-mailadres in',
             'phone.regex' => 'Vul een geldig telefoonnummer in',
             'phone.min' => 'Vul een geldig telefoonnummer in',
+            'phone.required' => 'Vul uw telefoonnummer in',
             'content.required' => 'Vul een bericht in',
             'g-recaptcha-response.required' => 'Vul de captcha in',
             'g-recaptcha-response.recaptcha' => 'Vul de captcha in',
@@ -107,7 +106,7 @@ class ContactForm extends ComponentBase
         // Send email to admin (later to be integrated into the backend)
         \Mail::send('exposia.simplecontactform::mail.message', $vars, function ($message) use ($request) {
             $message->from($request->email); // Message send from the email address of the user
-            $message->to('rick@rapide.software', 'Admin')->subject('Nieuw bericht via boekholt-aircos.nl'); // Email address on which you want to receive emails and the subject
+            $message->to('info@boekholt-aircos.nl', 'Contactformulier Boekholt')->subject('Nieuw bericht via boekholt-aircos.nl'); // Email address on which you want to receive emails and the subject
         });
 
         // Return back to the page with a success message
