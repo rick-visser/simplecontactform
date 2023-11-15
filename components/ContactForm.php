@@ -3,9 +3,6 @@
 namespace Exposia\SimpleContactForm\Components;
 
 use Cms\Classes\ComponentBase;
-use Flash;
-use Mail;
-use Input;
 use Validator;
 use Redirect;
 use Illuminate\Http\Request;
@@ -29,6 +26,10 @@ class ContactForm extends ComponentBase
             'lastname' => $request->get('lastname'),
             'email' => $request->get('email'),
             'phone' => $request->get('phone'),
+            'street' => $request->get('street'),
+            'city' => $request->get('city'),
+//            'state' => $request->get('state'),
+            'zip' => $request->get('zip'),
             'company' => $request->get('company'),
             'content' => $request->get('content'),
         ];
@@ -39,6 +40,10 @@ class ContactForm extends ComponentBase
             'lastname' => 'required',
             'email' => 'required|email',
             'phone' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'street' => 'nullable',
+            'city' => 'nullable',
+//            'state' => 'nullable',
+            'zip' => 'nullable',
             'company' => 'nullable',
             'content' => 'required',
         ];
@@ -97,12 +102,12 @@ class ContactForm extends ComponentBase
         Contact::create($request->all()); // Add a record to the database
 
         // Variables to be used in the email
-        $vars = ['firstname' => $request->get('firstname'), 'lastname' => $request->get('lastname'), 'email' => $request->get('email'), 'phone' => $request->get('phone'), 'company' => $request->get('company'), 'content' => $request->get('content')];
+        $vars = ['firstname' => $request->get('firstname'), 'lastname' => $request->get('lastname'), 'email' => $request->get('email'), 'phone' => $request->get('phone'), 'street' => $request->get('street'), 'city' => $request->get('city'), 'zip' => $request->get('zip'), 'company' => $request->get('company'), 'content' => $request->get('content')];
 
         // Send email to admin (later to be integrated into the backend)
         \Mail::send('exposia.simplecontactform::mail.message', $vars, function ($message) use ($request) {
             $message->from($request->email); // Message send from the email address of the user
-            $message->to('info@gerrieokken.nl', 'Admin')->subject('Nieuw bericht via gerrieokken.nl'); // Email address on which you want to receive emails and the subject
+            $message->to('rick@rapide.software', 'Admin')->subject('Nieuw bericht via boekholt-aircos.nl'); // Email address on which you want to receive emails and the subject
         });
 
         // Return back to the page with a success message
